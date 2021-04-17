@@ -1,0 +1,148 @@
+<!--
+ - Created by Max on 21.03.2021.
+ -->
+<!--TODO разнести на два компонента login и reg -->
+<aura:component description="LoginRegForm"
+                implements="force:hasRecordId,force:appHostable,force:lightningQuickAction,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,forceCommunity:availableForAllPageTypes,lightning:isUrlAddressable"
+                access="global"
+                controller="LoginRegFormController">
+
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+
+    <aura:attribute name="lgPassword" type="String"/>
+    <aura:attribute name="lgUsername" type="String"/>
+    <aura:attribute name="lgErrorMessage" type="String"/>
+    <aura:attribute name="lgShowErrorMessage" type="Boolean"/>
+
+    <aura:attribute name="regPassword" type="String"/>
+    <aura:attribute name="regEmail" type="String"/>
+    <aura:attribute name="regCompanyName" type="String"/>
+    <aura:attribute name="regFirstName" type="String"/>
+    <aura:attribute name="regLastName" type="String"/>
+    <aura:attribute name="regErrorMessage" type="String"/>
+    <aura:attribute name="regShowErrorMessage" type="Boolean"/>
+
+    <aura:attribute name="showLoginForm" type="Boolean" default="true"/>
+    <aura:attribute name="showRegForm" type="Boolean" default="false"/>
+
+    <aura:attribute name="leadRecord" type="Object"/>
+    <aura:attribute name="leadFields" type="Object"/>
+    <aura:attribute name="leadEditorErrors" type="String"/>
+
+    <force:recordData aura:id="leadEditor"
+                      fields="FirstName,LastName,Email,Company,Password__c"
+                      targetRecord="{!v.leadRecord}"
+                      targetFields="{!v.leadFields}"
+                      targetError="{!v.leadEditorErrors}"
+                      mode="EDIT"
+    />
+
+    <aura:if isTrue="{!v.showLoginForm}">
+        <form class="slds-form_stacked loginForm">
+            <div class="headerContainer">
+                <lightning:formattedText value="LOGIN" class="regLoginText"/>
+            </div>
+
+            <lightning:input aura:id="lgUsernameInput" label="Username"
+                             name="lgUsernameInput"
+                             value="{!v.lgUsername}"
+                             required="true"
+                             class="formLoginInput"
+            />
+
+            <lightning:input aura:id="lgPasswordInput" label="Password"
+                             name="lgPasswordInput"
+                             value="{!v.lgPassword}"
+                             required="true"
+                             class="formLoginInput"
+                             pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+                             messageWhenPatternMismatch="Password must contain 8 or more characters that are of at least one number, and one uppercase and lowercase letter."
+            />
+
+            <aura:if isTrue="{!v.lgShowErrorMessage}">
+                <lightning:formattedText aura:id="lgErrorMessageText" value="{!v.lgErrorMessage}"
+                                         class="errorMessageText"/>
+            </aura:if>
+
+            <div class="footerContainer">
+                <lightning:button aura:id="lgLoginButton"
+                                  label="login"
+                                  class="footerButton"
+                                  variant="destructive"
+                                  onclick="{!c.login}"/>
+                <lightning:button aura:id="lgRegisterButton"
+                                  label="register"
+                                  class="footerButton"
+                                  variant="destructive"
+                                  onclick="{!c.goToRegForm}"/>
+            </div>
+
+        </form>
+    </aura:if>
+
+    <aura:if isTrue="{!v.showRegForm}">
+        <form class="slds-form_stacked loginForm">
+            <div class="headerContainer">
+                <lightning:formattedText value="REGISTRATION" class="regLoginText"/>
+            </div>
+
+            <lightning:input aura:id="regFirstNameInput" label="FirstName"
+                             name="regFirstNameInput"
+                             value="{!v.leadFields.FirstName}"
+                             required="true"
+                             class="formLoginInput"
+                             pattern="[A-Za-z ]{1,32}"
+            />
+
+            <lightning:input aura:id="regLastNameInput" label="LastName"
+                             name="regLastNameInput"
+                             value="{!v.leadFields.LastName}"
+                             required="true"
+                             class="formLoginInput"
+                             pattern="[A-Za-z ]{1,32}"
+            />
+
+            <lightning:input aura:id="regEmailInput" label="Email"
+                             name="regEmailInput"
+                             type="email"
+                             value="{!v.leadFields.Email}"
+                             required="true"
+                             class="formLoginInput"
+            />
+
+            <lightning:input aura:id="regCompanyNameInput" label="CompanyName"
+                             name="regCompanyNameInput"
+                             value="{!v.leadFields.Company}"
+                             required="true"
+                             class="formLoginInput"
+            />
+
+            <lightning:input aura:id="regPasswordInput" label="Password"
+                             name="regPasswordInput"
+                             value="{!v.leadFields.Password__c}"
+                             required="true"
+                             class="formLoginInput"
+                             pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+                             messageWhenPatternMismatch="Password must contain 8 or more characters that are of at least one number, and one uppercase and lowercase letter."
+            />
+
+            <aura:if isTrue="{!v.regShowErrorMessage}">
+                <lightning:formattedText aura:id="regErrorMessageText" value="{!v.regErrorMessage}"
+                                         class="errorMessageText"/>
+            </aura:if>
+
+            <div class="footerContainer">
+                <lightning:button aura:id="rgRegisterButton"
+                                  label="register"
+                                  class="footerButton"
+                                  variant="destructive"
+                                  onclick="{!c.register}"/>
+                <lightning:button aura:id="rgLoginButton"
+                                  label="login"
+                                  class="footerButton"
+                                  variant="destructive"
+                                  onclick="{!c.goToLoginForm}"/>
+            </div>
+        </form>
+    </aura:if>
+</aura:component>

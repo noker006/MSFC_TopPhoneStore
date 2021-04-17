@@ -1,0 +1,48 @@
+/**
+ * Created by Max on 21.03.2021.
+ */
+
+.THIS {
+}
+
+.THIS .footerContainer {
+    display: flex;
+    justify-content: center;
+    background-color: rgb(47, 58, 61);
+}
+
+.THIS .footerButton {
+    margin: 10px;
+    min-width: 100px;
+}
+
+.THIS .headerContainer {
+    display: flex;
+    justify-content: center;
+    background-color: rgb(47, 58, 61);
+}
+
+.THIS .regLoginText {
+    color: ghostwhite;
+    font-family: 'Lato';
+    font-size: large;
+    margin: 10px;
+}
+
+.THIS .formLoginInput{
+    color: black;
+    margin: 10px 0;
+}
+
+.THIS .errorMessageText{
+    color: rgb(194, 57, 52);
+    font-family: 'Lato';
+    font-size: 10pt;
+    margin: 5px;
+    display: flex;
+    justify-content: center;
+}
+
+.THIS.loginForm{
+    background: rgb(171,175,188);
+}

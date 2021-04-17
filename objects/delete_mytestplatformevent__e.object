@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <deploymentStatus>InDevelopment</deploymentStatus>
+    <description>delete_mytestplatformevent</description>
+    <eventType>HighVolume</eventType>
+    <label>delete_mytestplatformevent</label>
+    <pluralLabel>delete_mytestplatformevent</pluralLabel>
+    <publishBehavior>PublishImmediately</publishBehavior>
+</CustomObject>

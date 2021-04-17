@@ -1,0 +1,16 @@
+<!--
+ - Created by Max on 14.03.2021.
+ -->
+
+<aura:component description="tpsMobileCard"
+                implements="force:hasRecordId,force:appHostable,force:lightningQuickAction,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,forceCommunity:availableForAllPageTypes,lightning:isUrlAddressable">
+
+    <aura:attribute name="mobileData" type="Product2" />
+    <div>
+        <img src="{!$Resource.RedIPhone}"/>
+        <lightning:formattedText value="Email salesforce.com and info.salesforce.com" />
+        <lightning:formattedText value="Email salesforce.com and info.salesforce.com" />
+        <lightning:formattedText value="Email salesforce.com and info.salesforce.com" />
+
+    </div>
+</aura:component>
