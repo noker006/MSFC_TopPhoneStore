@@ -14,6 +14,14 @@
     <aura:attribute name="lgErrorMessage" type="String"/>
     <aura:attribute name="lgShowErrorMessage" type="Boolean"/>
 
+    <aura:attribute name="lead" type="Lead" default="{
+                'sobjectType': 'Lead',
+                'Password__c': '',
+                'Email': '',
+                'Company': '',
+                'Name': ''
+    }"/>
+
     <aura:attribute name="regPassword" type="String"/>
     <aura:attribute name="regEmail" type="String"/>
     <aura:attribute name="regCompanyName" type="String"/>
@@ -29,14 +37,6 @@
     <aura:attribute name="leadFields" type="Object"/>
     <aura:attribute name="leadEditorErrors" type="String"/>
 
-    <force:recordData aura:id="leadEditor"
-                      fields="FirstName,LastName,Email,Company,Password__c"
-                      targetRecord="{!v.leadRecord}"
-                      targetFields="{!v.leadFields}"
-                      targetError="{!v.leadEditorErrors}"
-                      mode="EDIT"
-    />
-
     <aura:if isTrue="{!v.showLoginForm}">
         <form class="slds-form_stacked loginForm">
             <div class="headerContainer">
@@ -45,6 +45,7 @@
 
             <lightning:input aura:id="lgUsernameInput" label="Username"
                              name="lgUsernameInput"
+                             type="email"
                              value="{!v.lgUsername}"
                              required="true"
                              class="formLoginInput"
@@ -88,7 +89,7 @@
 
             <lightning:input aura:id="regFirstNameInput" label="FirstName"
                              name="regFirstNameInput"
-                             value="{!v.leadFields.FirstName}"
+                             value="{!v.lead.FirstName}"
                              required="true"
                              class="formLoginInput"
                              pattern="[A-Za-z ]{1,32}"
@@ -96,7 +97,7 @@
 
             <lightning:input aura:id="regLastNameInput" label="LastName"
                              name="regLastNameInput"
-                             value="{!v.leadFields.LastName}"
+                             value="{!v.lead.LastName}"
                              required="true"
                              class="formLoginInput"
                              pattern="[A-Za-z ]{1,32}"
@@ -105,21 +106,22 @@
             <lightning:input aura:id="regEmailInput" label="Email"
                              name="regEmailInput"
                              type="email"
-                             value="{!v.leadFields.Email}"
+                             value="{!v.lead.Email}"
                              required="true"
                              class="formLoginInput"
+                             onchange="{!c.regEmailIsChange}"
             />
 
             <lightning:input aura:id="regCompanyNameInput" label="CompanyName"
                              name="regCompanyNameInput"
-                             value="{!v.leadFields.Company}"
+                             value="{!v.lead.Company}"
                              required="true"
                              class="formLoginInput"
             />
 
             <lightning:input aura:id="regPasswordInput" label="Password"
                              name="regPasswordInput"
-                             value="{!v.leadFields.Password__c}"
+                             value="{!v.lead.Password__c}"
                              required="true"
                              class="formLoginInput"
                              pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"

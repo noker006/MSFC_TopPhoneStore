@@ -2,16 +2,18 @@
  * Created by Max on 21.03.2021.
  */
 
-public class LoginRegFormWrapper {
-    public class Result{
-        @AuraEnabled public Boolean isValidUser { get; set; }
+public without sharing class LoginRegFormWrapper {
+    public class Result {
+        @AuraEnabled public Boolean isExistedUser { get; set; }
         @AuraEnabled public String errorMessage { get; set; }
+        @AuraEnabled public Lead user { get; set; }
 
-        public Result(Boolean isValidUser, String errorMessage){
-            this.isValidUser = isValidUser;
+        public Result(Boolean isExistedUser, String errorMessage) {
+            this.isExistedUser = isExistedUser;
             this.errorMessage = errorMessage;
         }
-        public Result( ){
+        public Result() {
 
         }
-    }}
+    }
+}
