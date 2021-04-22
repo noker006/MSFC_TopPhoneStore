@@ -1,0 +1,8 @@
+<!--
+ - Created by Max on 19.04.2021.
+ -->
+
+<aura:component description="PhoneStoreFilters">
+    <aura:attribute name="makerOptions" type="List"/>
+    <aura:attribute name="colorOptions" type="List"/>
+</aura:component>

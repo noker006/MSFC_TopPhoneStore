@@ -1,0 +1,15 @@
+/**
+ * Created by Max on 18.04.2021.
+ */
+
+.THIS.slds-scrollable{
+    padding: 0 ;
+    height: 750px;
+    overflow-y: scroll;
+}
+
+.THIS .phoneCardContainer{
+    display: flex;
+    max-height: 20rem;
+    margin: 1rem;
+}

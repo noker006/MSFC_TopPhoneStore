@@ -1,0 +1,44 @@
+/**
+ * Created by Max on 17.04.2021.
+ */
+
+.THIS.cardContainer {
+    display: grid;
+    grid-template-columns: 1fr 3fr 1fr 1fr;
+    grid-template-rows: 1fr;
+    border: 2px solid black;
+}
+
+.THIS .cardDescription {
+    display: flex;
+    flex-direction: column;
+    margin: 1rem;
+}
+
+.THIS .cardAction {
+    display: flex;
+    flex-direction: column;
+    width: 6rem;
+    justify-content: space-between;
+    margin: 3rem auto 3rem auto;
+}
+
+.THIS .cardImage {
+    display: flex;
+}
+
+.THIS .phoneName {
+    font-size: 14pt;
+    font-weight: bold;
+}
+
+.THIS .cardMainInfo {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 3rem;
+}
+
+
+
+

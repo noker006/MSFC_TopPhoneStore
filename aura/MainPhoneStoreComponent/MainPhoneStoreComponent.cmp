@@ -1,0 +1,13 @@
+<!--
+ - Created by Max on 18.04.2021.
+ -->
+
+<aura:component description="MainPhoneStoreComponent" implements="force:appHostable,
+                flexipage:availableForAllPageTypes,
+                forceCommunity:availableForAllPageTypes,
+                lightning:isUrlAddressable"
+                access="global"
+                controller="MainPhoneStoreComponentController">
+    <c:PhoneStoreTable/>
+
+</aura:component>

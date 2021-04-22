@@ -1,0 +1,49 @@
+<!--
+ - Created by Max on 17.04.2021.
+ -->
+
+<aura:component description="PhoneCard"
+                implements="force:appHostable,
+                flexipage:availableForAllPageTypes,
+                forceCommunity:availableForAllPageTypes,
+                lightning:isUrlAddressable"
+                access="global"
+                controller="PhoneCardController">
+    <aura:handler name="init" action="{!c.doInit}" value="{!this}"/>
+
+    <aura:attribute name="product" type="Product2" default="{'sobjectType': 'Product2',
+                'Name': '',
+                'ProductCode': '',
+                'Description': '',
+                'Family': '',
+                'PricebookEntries': [],
+                'Processor__c': '',
+                'BodyColor__c': '',
+                'Image__c': '',
+                'Maker__c': ''
+    }"/>
+    <aura:attribute name="unitPrice" type="Double"/>
+
+    <div class="cardContainer">
+        <div class="cardImage">
+            <img src="{!v.product.Image__c}" alt="phoneImage"/>
+        </div>
+        <div class="cardDescription">
+            <lightning:formattedText value="{!'Name: ' + v.product.Name}" class="phoneName"/>
+            <lightning:formattedText value="{!'ProductCode: ' + v.product.ProductCode}"/>
+            <lightning:formattedText value="{!'Description: ' + v.product.Description}"/>
+            <lightning:formattedText value="{!'Processor: ' + v.product.Processor__c}"/>
+            <lightning:formattedText value="{!'Color: ' + v.product.BodyColor__c}"/>
+            <lightning:formattedText value="{!'Maker: ' + v.product.Maker__c}"/>
+            <lightning:formattedText value="{!'OS: ' + v.product.OperatingSystem__c}"/>
+        </div>
+        <div class="cardMainInfo">
+            <lightning:formattedText value="{!'Price: ' + v.unitPrice}"/>
+            <lightning:formattedText value="{!'Price: ' + v.unitPrice}"/>
+        </div>
+        <div class="cardAction">
+            <lightning:button variant="destructive" label="to cart" title="Brand action" onclick="{! c.handleClick }"/>
+            <lightning:button variant="destructive" label="review" title="Brand action" onclick="{! c.handleClick }"/>
+        </div>
+    </div>
+</aura:component>
