@@ -21,7 +21,7 @@
                 console.log(result);
                 if (result.isExistedUser) {
                     this.showToast(cmp, "OK", "Hi"+ result.user.Name, "success");
-                    window.open("mainStorePage", "_self");
+                    window.open("mainStorePage/?leadId=" + result.user.Id, "_self");
                 } else {
                     this.errorHanler(cmp, "Error", "result.errorMessage", "##"+result.errorMessage);
 

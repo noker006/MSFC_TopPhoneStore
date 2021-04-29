@@ -1,0 +1,14 @@
+<!--
+ - Created by Max on 25.04.2021.
+ -->
+
+<aura:component description="PhoneStoreCart" implements="force:appHostable,
+                flexipage:availableForAllPageTypes,
+                forceCommunity:availableForAllPageTypes,
+                lightning:isUrlAddressable">
+    <aura:attribute name="cartItems" type="List"/>
+
+    <div class="cartContainer">
+
+    </div>
+</aura:component>

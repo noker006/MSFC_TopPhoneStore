@@ -13,14 +13,14 @@
 
     <aura:attribute name="listProducts" type="List"/>
     <aura:attribute name="soqlQuery" type="String"
-                    default="SELECT Name,ProductCode,Description,Processor__c,BodyColor__c,Image__c,Maker__c,OperatingSystem__c,(SELECT Id,UnitPrice FROM PricebookEntries) FROM Product2 "/>
+                    default="SELECT Name,ProductCode,Description,Processor__c,BodyColor__c,Image__c,Maker__c,OperatingSystem__c,(SELECT Id,UnitPrice FROM PricebookEntries WHERE IsActive = TRUE ORDER BY CreatedDate LIMIT 1) FROM Product2 "/>
     <aura:attribute name="isSoqlProcessing" type="Boolean" default="false"/>
     <aura:attribute name="actualOffset" type="Integer"/>
 
     <div class="slds-scrollable" aura:id="scrollContainerId">
         <aura:iteration items="{!v.listProducts}" var="product" indexVar="index">
                 <div class="phoneCardContainer">
-                    <c:PhoneCard aura:id="phoneCardId" product="{!product}"/>
+                    <c:PhoneCard aura:id="phoneCardId" product="{!product}" leadId="{#v.leadId}"/>
                 </div>
         </aura:iteration>
     </div>

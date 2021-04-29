@@ -1,0 +1,7 @@
+<!--
+ - Created by Max on 23.04.2021.
+ -->
+
+<aura:component extensible="true" abstract="true" access="global">
+    {!v.body}
+</aura:component>

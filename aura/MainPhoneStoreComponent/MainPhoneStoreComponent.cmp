@@ -8,6 +8,27 @@
                 lightning:isUrlAddressable"
                 access="global"
                 controller="MainPhoneStoreComponentController">
-    <c:PhoneStoreTable/>
+    <aura:registerEvent name="setLead" type="c:setLeadId"/>
 
+    <aura:handler name="init" action="{!c.doInit}" value="{!this}"/>
+
+    <aura:attribute name="leadId" type="String" default=""/>
+
+    <div class="mainPhoneStoreContainer">
+        <div class="headerBox">
+            <c:PhoneStoreHeader/>
+        </div>
+        <div class="filtersBox">
+            <c:PhoneStoreTable/>
+        </div>
+        <div class="tableBox">
+            <c:PhoneStoreTable/>
+        </div>
+        <div class="supportBox">
+            <lightning:button class="headerButton"
+                              variant="destructive"
+                              label="support"
+                              title="Destructive action"/>
+        </div>
+    </div>
 </aura:component>

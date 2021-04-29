@@ -2,5 +2,32 @@
  * Created by Max on 18.04.2021.
  */
 
-.THIS {
+.THIS.mainPhoneStoreContainer {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    grid-template-areas:
+    "a a"
+    "b c"
+    "d d";
+    width: 100%;
+}
+
+.THIS .headerBox {
+    grid-area: a;
+}
+
+.THIS .filtersBox {
+    grid-area: b;
+}
+
+.THIS .tableBox {
+    grid-area: c;
+    margin: 2rem 0 0 0;
+}
+
+.THIS .supportBox {
+    grid-area: d;
+    margin: 1rem 0 0 0;
+    display: flex;
+    place-content: flex-end;
 }

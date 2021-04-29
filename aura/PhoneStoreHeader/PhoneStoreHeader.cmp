@@ -3,4 +3,9 @@
  -->
 
 <aura:component description="PhoneStoreHeader">
+    <div class="headerContainer">
+        <lightning:button class="headerButton" variant="destructive" label="Cart" title="Destructive action" onclick="{!c.goToCart}"/>
+        <lightning:button class="headerButton" variant="destructive" label="Destructive" title="Destructive action" />
+        <lightning:button class="headerButton" variant="destructive" label="Destructive" title="Destructive action" />
+    </div>
 </aura:component>

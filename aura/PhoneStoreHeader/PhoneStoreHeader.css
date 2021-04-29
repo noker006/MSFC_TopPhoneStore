@@ -1,0 +1,14 @@
+/**
+ * Created by Max on 22.04.2021.
+ */
+
+.THIS.headerContainer {
+    background-color: rgb(47, 58, 61);
+}
+
+.THIS .headerButton {
+    height: 4vh;
+    margin: 1rem;
+    background: #800000;
+    border-color: maroon;
+}

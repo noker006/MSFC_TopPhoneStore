@@ -11,7 +11,10 @@
                 controller="PhoneCardController">
     <aura:handler name="init" action="{!c.doInit}" value="{!this}"/>
 
+    <aura:attribute name="unitPrice" type="Double"/>
+    <aura:attribute name="leadId" type="String" default=""/>
     <aura:attribute name="product" type="Product2" default="{'sobjectType': 'Product2',
+                'Id': '',
                 'Name': '',
                 'ProductCode': '',
                 'Description': '',
@@ -20,9 +23,9 @@
                 'Processor__c': '',
                 'BodyColor__c': '',
                 'Image__c': '',
-                'Maker__c': ''
+                'Maker__c': '',
+                'BatteryCapacity__c': ''
     }"/>
-    <aura:attribute name="unitPrice" type="Double"/>
 
     <div class="cardContainer">
         <div class="cardImage">
@@ -31,18 +34,19 @@
         <div class="cardDescription">
             <lightning:formattedText value="{!'Name: ' + v.product.Name}" class="phoneName"/>
             <lightning:formattedText value="{!'ProductCode: ' + v.product.ProductCode}"/>
-            <lightning:formattedText value="{!'Description: ' + v.product.Description}"/>
             <lightning:formattedText value="{!'Processor: ' + v.product.Processor__c}"/>
             <lightning:formattedText value="{!'Color: ' + v.product.BodyColor__c}"/>
             <lightning:formattedText value="{!'Maker: ' + v.product.Maker__c}"/>
+            <lightning:formattedText value="{!'Battery capacity: ' + v.product.BatteryCapacity__c}"/>
             <lightning:formattedText value="{!'OS: ' + v.product.OperatingSystem__c}"/>
+            <lightning:formattedText value="{!'Description: ' + v.product.Description}"/>
         </div>
         <div class="cardMainInfo">
             <lightning:formattedText value="{!'Price: ' + v.unitPrice}"/>
             <lightning:formattedText value="{!'Price: ' + v.unitPrice}"/>
         </div>
         <div class="cardAction">
-            <lightning:button variant="destructive" label="to cart" title="Brand action" onclick="{! c.handleClick }"/>
+            <lightning:button aura:id="toCartButtonId" variant="destructive" label="to cart" title="Brand action" onclick="{! c.toCartAction}"/>
             <lightning:button variant="destructive" label="review" title="Brand action" onclick="{! c.handleClick }"/>
         </div>
     </div>
