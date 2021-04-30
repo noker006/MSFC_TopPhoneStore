@@ -8,5 +8,4 @@
 
         window.open("phonestorecart/?leadId=" + leadId, "_self");
     },
-
 });

@@ -1,14 +1,26 @@
-<!--
+ <!--
  - Created by Max on 25.04.2021.
  -->
 
 <aura:component description="PhoneStoreCart" implements="force:appHostable,
                 flexipage:availableForAllPageTypes,
                 forceCommunity:availableForAllPageTypes,
-                lightning:isUrlAddressable">
+                lightning:isUrlAddressable" controller="PhoneStoreCartController">
+    <aura:handler name="priceChanged" event="c:totalPriceChanged"
+                  action="{!c.handleTotalPriceChanged}"/>
+    <aura:handler name="init" action="{!c.doInit}" value="{!this}"/>
+
     <aura:attribute name="cartItems" type="List"/>
+    <aura:attribute name="listOppLIs" type="List"/>
+    <aura:attribute name="totalPrice" type="Double"/>
 
     <div class="cartContainer">
-
+        <aura:iteration items="{!v.listOppLIs}" var="oppLI" indexVar="index">
+            <c:PhoneCardForCart aura:id="phoneCardId"  leadId="{#v.leadId}" oppLI="{!oppLI}"/>
+        </aura:iteration>
+        <div class="cartAction">
+            <lightning:formattedText value="{!'Total price: '+v.totalPrice}" />
+            <lightning:button class="headerButton" variant="destructive" label="Buy" title="Destructive action" onclick="{!c.buyAction}"/>
+        </div>
     </div>
 </aura:component>

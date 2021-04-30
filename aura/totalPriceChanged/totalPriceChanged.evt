@@ -1,0 +1,9 @@
+<!--
+ - Created by Max on 30.04.2021.
+ -->
+
+<aura:event type="COMPONENT" description="totalPriceChanged">
+    <aura:attribute name="price" type="Double"/>
+    <aura:attribute name="operation" type="String"/>
+    <aura:attribute name="oppLIId" type="String"/>
+</aura:event>

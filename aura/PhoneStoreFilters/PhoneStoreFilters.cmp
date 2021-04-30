@@ -5,4 +5,14 @@
 <aura:component description="PhoneStoreFilters">
     <aura:attribute name="makerOptions" type="List"/>
     <aura:attribute name="colorOptions" type="List"/>
+
+    <div>
+        <lightning:select  aura:Id="selectProducerOptionId" name="selectProducerOptionId"
+                           label="Producer"
+                           required="true" onchange="{!c.selectedProducerOption}">
+            <aura:iteration items="{!v.producerOptions}" var="itemProducerOption">
+                <option value="{!itemProducerOption}" text="{!itemProducerOption}"/>
+            </aura:iteration>
+        </lightning:select>
+    </div>
 </aura:component>

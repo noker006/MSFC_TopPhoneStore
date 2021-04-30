@@ -1,6 +1,52 @@
 /**
  * Created by Max on 28.04.2021.
  */
+.THIS.cardContainer {
+    display: grid;
+    grid-template-columns: 1fr 3fr 1fr 1fr;
+    grid-template-rows: 1fr;
+    border-style: none none solid none;
+    border-color: #e2e2e2;
+}
 
-.THIS {
+.THIS .cardDescription {
+    display: flex;
+    flex-direction: column;
+    margin: 1rem;
+}
+
+.THIS .cardAction {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 3rem auto 3rem auto;
+}
+
+.THIS .cardImage {
+    display: flex;
+}
+
+.THIS .phoneName {
+    font-size: 14pt;
+    font-weight: bold;
+}
+
+.THIS .cardMainInfo {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 4rem;
+}
+
+.THIS .quantityController{
+    display: flex;
+    flex-direction: row;
+}
+
+.THIS .oppLIQuantity{
+    width: 2rem;
+    text-align: center;
+    align-self: center;
+    align-content: center;
+    margin: 1rem;
 }

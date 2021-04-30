@@ -3,5 +3,59 @@
  -->
 
 <aura:component description="PhoneCardForCart">
+    <aura:registerEvent name="priceChanged" type="c:totalPriceChanged"/>
 
+    <aura:handler name="init" action="{!c.doInit}" value="{!this}"/>
+
+    <aura:attribute name="oppLITotalPrice" type="Double"/>
+    <aura:attribute name="unitPrice" type="Double"/>
+    <aura:attribute name="leadId" type="String" default=""/>
+    <aura:attribute name="oppLI" type="OpportunityLineItem" default="{'sobjectType': 'OpportunityLineItem',
+                'Id': '',
+                'Product2.Name': '',
+                'Product2.ProductCode': '',
+                'Product2.Description': '',
+                'Product2.Processor__c': '',
+                'Product2.BodyColor__c': '',
+                'Product2.Image__c': '',
+                'Product2.Maker__c': '',
+                'Product2.OperatingSystem__c': '',
+                'Product2.Image__c': '',
+                'UnitPrice': '',
+                'Quantity': '',
+    }"/>
+
+    <div class="cardContainer">
+        <div class="cardImage">
+            <img src="{!v.oppLI.Product2.Image__c}" alt="phoneImage"/>
+        </div>
+        <div class="cardDescription">
+            <lightning:formattedText value="{!'Name: ' + v.oppLI.Product2.Name}" class="phoneName"/>
+            <lightning:formattedText value="{!'ProductCode: ' + v.oppLI.Product2.ProductCode}"/>
+            <lightning:formattedText value="{!'Processor: ' + v.oppLI.Product2.Processor__c}"/>
+            <lightning:formattedText value="{!'Color: ' + v.oppLI.Product2.BodyColor__c}"/>
+            <lightning:formattedText value="{!'Maker: ' + v.oppLI.Product2.Maker__c}"/>
+            <lightning:formattedText value="{!'Battery capacity: ' + v.oppLI.Product2.BatteryCapacity__c}"/>
+            <lightning:formattedText value="{!'OS: ' + v.oppLI.Product2.OperatingSystem__c}"/>
+            <lightning:formattedText value="{!'Description: ' + v.oppLI.Product2.Description}"/>
+            <lightning:formattedText value="{!'Id: ' + v.oppLI.Id}"/>
+        </div>
+        <div class="cardMainInfo">
+            <lightning:formattedText value="{!'Price: ' + v.oppLI.UnitPrice}"/>
+            <lightning:formattedText value="{!'Price: ' + v.oppLI.UnitPrice}"/>
+        </div>
+        <div class="cardAction">
+            <div class="quantityController">
+                <lightning:button aura:id = "minusButton" class="headerButton" variant="destructive" label="-" title="-"
+                                  onclick="{!c.minusAction}" disabled="{! v.oppLI.Quantity == 1 ? true : false }"/>
+                <div class="oppLIQuantity">
+                    <lightning:formattedNumber value="{!v.oppLI.Quantity}"/>
+                </div>
+                <lightning:button class="headerButton" variant="destructive" label="+" title="+"
+                                  onclick="{!c.plusAction}"/>
+            </div>
+            <lightning:button class="headerButton" variant="destructive" label="Delete" title="Delete"
+                              onclick="{!c.deleteAction}"/>
+        </div>
+    </div>
 </aura:component>

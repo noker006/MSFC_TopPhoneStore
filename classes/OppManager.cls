@@ -5,7 +5,9 @@
 public without sharing class OppManager {
     public static List<Opportunity> getCartOppsByLeadId(Id leadId){
         List<Opportunity> opps = [
-                SELECT Id, (SELECT Id, Product2Id, Quantity	 FROM OpportunityLineItems)
+                SELECT Id,
+                        StageName,
+                (SELECT Id, Product2Id, Quantity	 FROM OpportunityLineItems)
                 FROM Opportunity
                 WHERE Lead__c = :leadId
                 AND StageName = 'Cart'

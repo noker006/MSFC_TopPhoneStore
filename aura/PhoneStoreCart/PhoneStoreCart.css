@@ -2,5 +2,14 @@
  * Created by Max on 25.04.2021.
  */
 
-.THIS {
+.THIS.cartContainer {
+    margin: 1rem 3rem 1rem 3rem;
+    border: 2px solid #e2e2e2;
+    border-radius: 5px;
+}
+
+.THIS .cartAction{
+    margin: 1rem;
+    display: flex;
+    justify-content: space-between;
 }
