@@ -8,4 +8,12 @@
 
         helper.getProductTableData(cmp, soqlQuery);
     },
+
+    handleNewQueryForTable : function(cmp, event, helper) {
+        const query = event.getParam("query");
+
+        cmp.set("v.soqlQuery", query);
+
+        helper.getProductTableDataForEvt(cmp, query);
+    },
 });

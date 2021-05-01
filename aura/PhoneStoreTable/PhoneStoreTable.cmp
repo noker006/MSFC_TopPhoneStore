@@ -11,6 +11,8 @@
                 controller="PhoneStoreTableController">
     <aura:handler name="init" action="{!c.doInit}" value="{!this}"/>
 
+    <aura:handler event="c:newQueryForTable" action="{!c.handleNewQueryForTable}"/>
+
     <aura:attribute name="listProducts" type="List"/>
     <aura:attribute name="soqlQuery" type="String"
                     default="SELECT Name,ProductCode,Description,Processor__c,BodyColor__c,Image__c,Maker__c,OperatingSystem__c,(SELECT Id,UnitPrice FROM PricebookEntries WHERE IsActive = TRUE ORDER BY CreatedDate LIMIT 1) FROM Product2 "/>

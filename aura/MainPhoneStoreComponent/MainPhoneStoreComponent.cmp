@@ -19,7 +19,7 @@
             <c:PhoneStoreHeader/>
         </div>
         <div class="filtersBox">
-            <c:PhoneStoreTable/>
+            <c:PhoneStoreFilters/>
         </div>
         <div class="tableBox">
             <c:PhoneStoreTable/>

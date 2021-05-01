@@ -1,0 +1,24 @@
+/**
+ * Created by Max on 30.04.2021.
+ */
+
+.THIS .filtersContainer{
+}
+
+.THIS .filterActionsContainer{
+    margin: 2rem 0 0 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+.THIS.phoneStoreFilterContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 1rem;
+}
+
+.THIS .priceFilterContainer{
+    display: flex;
+    flex-direction: row;
+}

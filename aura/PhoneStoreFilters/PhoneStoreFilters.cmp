@@ -2,17 +2,86 @@
  - Created by Max on 19.04.2021.
  -->
 
-<aura:component description="PhoneStoreFilters">
+<aura:component description="PhoneStoreFilters" controller="PhoneStoreFiltersController">
+    <aura:handler name="init" action="{!c.doInit}" value="{!this}"/>
+
+    <aura:registerEvent name="newQueryEvt" type="c:newQueryForTable"/>
+
     <aura:attribute name="makerOptions" type="List"/>
     <aura:attribute name="colorOptions" type="List"/>
+    <aura:attribute name="screenResolutionOptions" type="List"/>
+    <aura:attribute name="osOptions" type="List"/>
+    <aura:attribute name="fromPrice" type="Decimal" default="0"/>
+    <aura:attribute name="toPrice" type="Decimal" default="0"/>
+    <aura:attribute name="query" type="String" default=""/>
 
-    <div>
-        <lightning:select  aura:Id="selectProducerOptionId" name="selectProducerOptionId"
-                           label="Producer"
-                           required="true" onchange="{!c.selectedProducerOption}">
-            <aura:iteration items="{!v.producerOptions}" var="itemProducerOption">
-                <option value="{!itemProducerOption}" text="{!itemProducerOption}"/>
-            </aura:iteration>
-        </lightning:select>
+    <aura:attribute name="defaultQuery" type="String" default="SELECT Name,ProductCode,Description,Processor__c,BodyColor__c,Image__c,Maker__c,OperatingSystem__c,(SELECT Id,UnitPrice FROM PricebookEntries WHERE IsActive = TRUE ORDER BY CreatedDate LIMIT 1) FROM Product2 "/>
+
+    <div class="phoneStoreFilterContainer">
+        <div class="filtersContainer">
+            <lightning:select aura:id="selectMakerOptionId"
+                              name="selectMakerOptions"
+                              label="Maker"
+                              required="true"
+                              onchange="{!c.selectedProducerOption}">
+                <aura:iteration items="{!v.makerOptions}" var="maker">
+                    <option value="{!maker}" text="{!maker}"></option>
+                </aura:iteration>
+            </lightning:select>
+
+            <lightning:select aura:id="selectColorOptionId"
+                              name="selectColorOptions"
+                              label="Color"
+                              required="true"
+                              onchange="{!c.selectedProducerOption}">
+                <aura:iteration items="{!v.colorOptions}" var="color">
+                    <option value="{!color}" text="{!color}"></option>
+                </aura:iteration>
+            </lightning:select>
+
+            <lightning:select aura:id="selectScreenResolutionOptionId"
+                              name="ScreenResolutionOptions"
+                              label="ScreenResolution"
+                              required="true"
+                              onchange="{!c.selectedProducerOption}">
+                <aura:iteration items="{!v.screenResolutionOptions}" var="screenResolution">
+                    <option value="{!screenResolution}" text="{!screenResolution}"></option>
+                </aura:iteration>
+            </lightning:select>
+
+            <lightning:select aura:id="selectOSOptionsId"
+                              name="selectOSOptions"
+                              label="OS"
+                              required="true"
+                              onchange="{!c.selectedProducerOption}">
+                <aura:iteration items="{!v.osOptions}" var="os">
+                    <option value="{!os}" text="{!os}"></option>
+                </aura:iteration>
+            </lightning:select>
+
+            <div class="priceFilterContainer">
+                <lightning:input aura:id="fromPriceId" type="text" label="from" name="fromPrice"
+                                 value="{!v.fromPrice}" onchange="{!c.priceInputChange}" pattern= "^[0-9]+$"
+                                 messageWhenPatternMismatch="Enter valid integer number"/>
+                <lightning:input aura:id="toPriceId" type="text" label="to" name="toPrice" value="{!v.toPrice}"
+                                 onchange="{!c.priceInputChange}" pattern= "^[0-9]+$"
+                                 messageWhenPatternMismatch="Enter valid integer number"/>
+            </div>
+        </div>
+
+        <div class="filterActionsContainer">
+            <lightning:button class="filterButton"
+                              aura:id="searchButtonId"
+                              variant="destructive"
+                              label="search"
+                              title="Destructive action"
+                              onclick="{!c.searchAction}"
+            />
+            <lightning:button class="filterButton"
+                              variant="destructive"
+                              label="clear"
+                              title="Destructive action"
+                              onclick="{!c.clearAction}"/>
+        </div>
     </div>
 </aura:component>
