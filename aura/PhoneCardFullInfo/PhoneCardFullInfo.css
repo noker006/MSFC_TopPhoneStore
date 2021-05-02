@@ -1,0 +1,29 @@
+/**
+ * Created by Max on 02.05.2021.
+ */
+
+.THIS.fullInfoCardContainer{
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    grid-template-rows: 1fr 2fr 0.5fr;
+    grid-template-areas:
+    "a b"
+    "c c"
+    "d d";
+}
+
+.THIS .imageContainer{
+    grid-area: a;
+}
+
+.THIS .partialInfoContainer{
+    grid-area: b;
+}
+
+.THIS .mainInfoContainer{
+    grid-area: c;
+}
+
+.THIS .actionsContainer{
+    grid-area: d;
+}

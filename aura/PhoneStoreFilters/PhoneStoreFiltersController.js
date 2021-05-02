@@ -15,6 +15,7 @@
         const color = cmp.find("selectColorOptionId").get("v.value");
         const screenResolution = cmp.find("selectScreenResolutionOptionId").get("v.value");
         const OS = cmp.find("selectOSOptionsId").get("v.value");
+        const nameForSearch = cmp.get("v.nameForSearch");
 
         const fromPrice = cmp.get("v.fromPrice");
         let toPrice = cmp.get("v.toPrice");
@@ -29,7 +30,8 @@
             "BodyColor__c": color,
             "ScreenResolution__c": screenResolution,
             "OperatingSystem__c": OS,
-            "UnitPrice": fromPrice + ',' + toPrice
+            "UnitPrice": fromPrice + ',' + toPrice,
+            "Name": "%"+nameForSearch+"%"
         };
 
         helper.getQuery(cmp, queryConditions);

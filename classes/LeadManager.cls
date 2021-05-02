@@ -5,7 +5,7 @@
 public without sharing class LeadManager {
     public static List<Lead> getLeadById(Id leadId){
         List<Lead> leads = [
-                SELECT Id, FirstName, LastName, Email
+                SELECT Id, FirstName, LastName, Email, Name
                 FROM Lead
                 WHERE Id = :leadId
         ];

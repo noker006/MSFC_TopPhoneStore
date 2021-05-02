@@ -21,7 +21,7 @@ public without sharing class PhoneStoreFiltersController {
 
     @AuraEnabled
     public static String getQuery(Map<String, String> queryConditions) {
-        String query = 'SELECT Name,ProductCode,Description,Processor__c,BodyColor__c,Image__c,Maker__c,OperatingSystem__c,' +
+        String query = 'SELECT Name,ProductCode,Description,Processor__c,BodyColor__c,Image__c,Maker__c,OperatingSystem__c,Rating__c,ReviewNumbers__c,' +
                 '(SELECT Id,UnitPrice FROM PricebookEntries WHERE IsActive = TRUE ORDER BY CreatedDate LIMIT 1) ' +
                 'FROM Product2 ';
 
@@ -35,9 +35,17 @@ public without sharing class PhoneStoreFiltersController {
             }
             if (fieldValue != null && fieldValue != '' && fieldValue != 'none' && keyField != 'UnitPrice') {
                 if (conditionCounter != 0) {
-                    query += 'AND ' + keyField + ' = ' + '\'' + fieldValue + '\'' + ' ';
+                    if(keyField == 'Name') {
+                        query += 'AND ' + keyField + ' LIKE ' + '\'' + fieldValue + '\'' + ' ';
+                    } else {
+                        query += 'AND ' + keyField + ' = ' + '\'' + fieldValue + '\'' + ' ';
+                    }
                 } else {
-                    query += keyField + ' = ' + '\'' + fieldValue + '\'' + ' ';
+                    if(keyField == 'Name') {
+                        query += keyField + ' LIKE ' + '\'' + fieldValue + '\'' + ' ';
+                    } else {
+                        query += keyField + ' = ' + '\'' + fieldValue + '\'' + ' ';
+                    }
                 }
                 conditionCounter++;
             }

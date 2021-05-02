@@ -1,0 +1,46 @@
+/**
+ * Created by Max on 01.05.2021.
+ */
+
+.THIS .modalImage {
+    display: flex;
+}
+
+.THIS .modalBodyContainer {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    grid-template-rows: 1fr;
+}
+
+.THIS .modalFieldInputBox {
+    display: flex;
+    flex-direction: column;
+    overflow: auto;
+}
+
+.THIS .quantityController{
+    display: flex;
+    flex-direction: row;
+}
+
+.THIS .oppLIQuantity{
+    width: 2rem;
+    text-align: center;
+    align-self: center;
+    align-content: center;
+    margin: 1rem;
+}
+
+.THIS .slds-modal__footer{
+    display: flex;
+    justify-content: space-between;
+}
+
+.THIS .descriptionLabel {
+    color: #696969;
+}
+
+.THIS .quantityControlContainer{
+    display: flex;
+    flex-direction: column;
+}

@@ -2,30 +2,79 @@
  - Created by Max on 01.05.2021.
  -->
 
-<aura:component description="PhoneStoreReviewModal" >
+<aura:component description="PhoneStoreReviewModal" controller="PhoneStoreReviewModalController">
+    <aura:handler name="init" action="{!c.doInit}" value="{!this}"/>
 
-    <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+    <aura:attribute name="productId" type="String" default=""/>
+    <aura:attribute name="leadId" type="String" default=""/>
+    <aura:attribute name="product" type="Product2" default="{'sobjectType': 'Product2',
+                'Id': '',
+                'Name': '',
+                'ProductCode': '',
+                'Description': '',
+                'Family': '',
+                'PricebookEntries': [],
+                'Processor__c': '',
+                'BodyColor__c': '',
+                'Image__c': '',
+                'Maker__c': '',
+                'BatteryCapacity__c': '',
+                'Rating__c': '',
+                'ReviewNumbers__c': ''
+    }"/>
+    <aura:attribute name="showReviewModal" type="Boolean" default="false"/>
+    <aura:attribute name="description" type="String" default=""/>
+    <aura:attribute name="productRating" type="Decimal" default="1"/>
+
+    <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true"
+             aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open slds-modal_medium">
         <div class="slds-modal__container">
             <header class="slds-modal__header">
-                <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close">
-                    <svg class="slds-button__icon slds-button__icon_large" aria-hidden="true">
-                        <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
-                    </svg>
-                    <span class="slds-assistive-text">Close</span>
-                </button>
-                <h2 id="modal-heading-01" class="slds-modal__title slds-hyphenate">Modal header</h2>
-                <p class="slds-m-top_x-small">Here’s a tagline if you need it. It is allowed to extend across mulitple lines, so I’m making up content to show that to you. It is allowed to
-                    <a href="#">contain links or be a link</a>.</p>
+                <lightning:buttonIcon iconName="utility:close" onclick="{! c.closeReviewModal }" alternativeText="close"
+                                      variant="bare" class="slds-modal__close" aura:Id="closeWindowId"/>
+                <h1 id="modal-heading-01" class="slds-modal__title slds-hyphenate">
+                    Review {!v.product.Name}
+                </h1>
             </header>
             <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
-                <p>Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco deserunt aute id consequat veniam incididunt duis in sint irure nisi. Mollit officia cillum Lorem ullamco minim nostrud elit officia tempor esse quis. Cillum sunt ad dolore quis
-                    aute consequat ipsum magna exercitation reprehenderit magna. Tempor cupidatat consequat elit dolor adipisicing.</p>
-                <p>Dolor eiusmod sunt ex incididunt cillum quis nostrud velit duis sit officia. Lorem aliqua enim laboris do dolor eiusmod officia. Mollit incididunt nisi consectetur esse laborum eiusmod pariatur proident. Eiusmod et adipisicing culpa deserunt nostrud
-                    ad veniam nulla aute est. Labore esse esse cupidatat amet velit id elit consequat minim ullamco mollit enim excepteur ea.</p>
+                <div class="modalBodyContainer">
+                    <div class="modalImage">
+                        <img src="{!v.product.Image__c}" alt="phoneImage"/>
+                    </div>
+                    <div class="modalFieldInputBox">
+
+                        <div class="quantityControlContainer">
+                            <lightning:formattedText value="Description" class="descriptionLabel"/>
+                            <lightning:inputRichText value="{!v.description}"/>
+                        </div>
+                        <div class="quantityControlContainer">
+                            <lightning:formattedText value="Score" class="descriptionLabel"/>
+                            <div class="quantityController">
+                                <lightning:button aura:id="minusButton"
+                                                  class="headerButton"
+                                                  variant="destructive" label="-" title="-"
+                                                  onclick="{!c.minusAction}"
+                                                  disabled="{! lessthanorequal(v.productRating , 1) ? true : false }"/>
+                                <div class="oppLIQuantity">
+                                    <lightning:formattedNumber value="{!v.productRating}"/>
+                                </div>
+                                <lightning:button class="plusButton"
+                                                  variant="destructive" label="+" title="+"
+                                                  onclick="{!c.plusAction}"
+                                                  disabled="{! greaterthanorequal(v.productRating , 5) ? true : false }"/>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
             </div>
             <footer class="slds-modal__footer">
-                <button class="slds-button slds-button_neutral">Cancel</button>
-                <button class="slds-button slds-button_brand">Save</button>
+                <lightning:button class="cancelButton"
+                                  variant="destructive" label="Cancel" title="Cancel"
+                                  onclick="{!c.cancelAction}"/>
+                <lightning:button class="saveButton"
+                                  variant="destructive" label="Save" title="Save"
+                                  onclick="{!c.saveAction}"/>
             </footer>
         </div>
     </section>

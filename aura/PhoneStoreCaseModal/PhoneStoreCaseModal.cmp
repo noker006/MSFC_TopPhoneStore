@@ -1,0 +1,49 @@
+<!--
+ - Created by Max on 02.05.2021.
+ -->
+
+<aura:component description="PhoneStoreCaseModal" controller="PhoneStoreCaseModalController">
+    <aura:handler name="init" action="{!c.doInit}" value="{!this}"/>
+
+    <aura:attribute name="subject" type="String" default=""/>
+    <aura:attribute name="description" type="String" default=""/>
+    <aura:attribute name="showCaseModal" type="Boolean" default=""/>
+    <aura:attribute name="leadId" type="String" default=""/>
+
+    <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true"
+             aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open slds-modal_medium">
+        <div class="slds-modal__container">
+            <header class="slds-modal__header">
+                <lightning:buttonIcon iconName="utility:close" onclick="{! c.closeReviewModal }" alternativeText="close"
+                                      variant="bare" class="slds-modal__close" aura:Id="closeWindowId"/>
+                <h1 id="modal-heading-01" class="slds-modal__title slds-hyphenate">
+                    Case
+                </h1>
+            </header>
+            <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                <div class="modalBodyContainer">
+                    <div class="modalFieldInputBox">
+
+                        <lightning:input type="text" value="{!v.subject}" label="Subject"/>
+
+                        <div class="inputRichTextContainer">
+                            <lightning:formattedText value="Description" class="descriptionLabel"/>
+                            <lightning:inputRichText value="{!v.description}" label="Description"/>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <footer class="slds-modal__footer">
+                <lightning:button class="cancelButton"
+                                  variant="destructive" label="Cancel" title="Cancel"
+                                  onclick="{!c.closeReviewModal}"/>
+                <lightning:button class="saveButton"
+                                  variant="destructive" label="Save" title="Save"
+                                  onclick="{!c.saveAction}"/>
+            </footer>
+        </div>
+    </section>
+    <div class="slds-backdrop slds-backdrop_open"></div>
+
+</aura:component>

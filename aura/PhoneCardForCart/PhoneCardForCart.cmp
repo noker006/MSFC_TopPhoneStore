@@ -51,7 +51,7 @@
                 <div class="oppLIQuantity">
                     <lightning:formattedNumber value="{!v.oppLI.Quantity}"/>
                 </div>
-                <lightning:button class="headerButton" variant="destructive" label="+" title="+"
+                <lightning:button class="plusButton" variant="destructive" label="+" title="+"
                                   onclick="{!c.plusAction}"/>
             </div>
             <lightning:button class="headerButton" variant="destructive" label="Delete" title="Delete"

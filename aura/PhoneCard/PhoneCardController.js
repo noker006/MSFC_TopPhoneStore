@@ -23,4 +23,21 @@
 
         helper.addToCart(cmp, product.Id, leadId);
     },
+
+    reviewAction: function (cmp, event, helper) {
+        const product = cmp.get("v.product");
+
+        const appEvent = $A.get("e.c:openReviewModal");
+        appEvent.setParams({
+            "product": product
+        });
+        appEvent.fire();
+    },
+
+    toPhoneFullInfoPage: function (cmp, event, helper) {
+        const leadId = cmp.get("v.leadId");
+        const productId = cmp.get("v.product").Id;
+
+        window.open("phoneFullInfoPage/?leadId=" + leadId + "&" + "productId=" + productId, "_self");
+    },
 });

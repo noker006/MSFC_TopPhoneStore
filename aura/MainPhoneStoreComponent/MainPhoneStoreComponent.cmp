@@ -11,8 +11,11 @@
     <aura:registerEvent name="setLead" type="c:setLeadId"/>
 
     <aura:handler name="init" action="{!c.doInit}" value="{!this}"/>
+    <aura:handler event="c:openReviewModal" action="{!c.handleOpenReviewModal}"/>
 
     <aura:attribute name="leadId" type="String" default=""/>
+    <aura:attribute name="showReviewModal" type="Boolean" default="false"/>
+    <aura:attribute name="showCaseModal" type="Boolean" default=""/>
 
     <div class="mainPhoneStoreContainer">
         <div class="headerBox">
@@ -28,7 +31,14 @@
             <lightning:button class="headerButton"
                               variant="destructive"
                               label="support"
-                              title="Destructive action"/>
+                              title="support"
+                              onclick="{!c.openCaseModal}"/>
         </div>
+        <aura:if isTrue="{!v.showReviewModal}">
+            <c:PhoneStoreReviewModal aura:id="phoneStoreReviewModalId" showReviewModal="{!v.showReviewModal}"/>
+        </aura:if>
+        <aura:if isTrue="{!v.showCaseModal}">
+            <c:PhoneStoreCaseModal showCaseModal="{!v.showCaseModal}"/>
+        </aura:if>
     </div>
 </aura:component>

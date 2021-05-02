@@ -1,5 +1,10 @@
-public without sharing class ProductManager {
-    public static Product2 getProductById(Id productId){
+/**
+ * Created by Max on 02.05.2021.
+ */
+
+public without sharing class PhoneCardFullInfoController {
+    @AuraEnabled
+    public static Product2 getProduct(Id productId){
         Product2 product = [
                 SELECT Name,
                         ProductCode,
@@ -8,11 +13,10 @@ public without sharing class ProductManager {
                         BodyColor__c,
                         Image__c,
                         Maker__c,
+                        OperatingSystem__c,
                         Rating__c,
                         ReviewNumbers__c,
-                        OperatingSystem__c,
-                        Score__c,
-                (SELECT Id,UnitPrice,Pricebook2Id FROM PricebookEntries WHERE IsActive = TRUE ORDER BY CreatedDate LIMIT 1)
+                (SELECT Id,UnitPrice FROM PricebookEntries WHERE IsActive = TRUE ORDER BY CreatedDate LIMIT 1)
                 FROM Product2
                 WHERE Id = :productId
         ];

@@ -1,0 +1,134 @@
+<!--
+ - Created by Max on 01.05.2021.
+ -->
+
+<aura:component description="PhoneCardFullInfo" implements="force:appHostable,
+                flexipage:availableForAllPageTypes,
+                forceCommunity:availableForAllPageTypes,
+                lightning:isUrlAddressable" controller="PhoneCardFullInfoController">
+    <aura:handler name="init" action="{!c.doInit}" value="{!this}"/>
+
+    <aura:attribute name="unitPrice" type="Double"/>
+    <aura:attribute name="leadId" type="String" default=""/>
+    <aura:attribute name="productId" type="String" default=""/>
+    <aura:attribute name="product" type="Product2" default="{'sobjectType': 'Product2',
+                'Id': '',
+                'Name': '',
+                'ProductCode': '',
+                'Description': '',
+                'Family': '',
+                'PricebookEntries': [],
+                'Processor__c': '',
+                'BodyColor__c': '',
+                'Image__c': '',
+                'Maker__c': '',
+                'BatteryCapacity__c': '',
+                'Rating__c': '',
+                'ReviewNumbers__c': ''
+    }"/>
+
+    <div class="fullInfoCardContainer">
+        <div class="imageContainer">
+            <img src="{!v.product.Image__c}" alt="phoneImage" class="phoneImage"/>
+        </div>
+        <div class="partialInfoContainer">
+            <div>
+                <lightning:formattedText value="{!v.product.Description}"/>
+            </div>
+        </div>
+        <div class="mainInfoContainer">
+            <table class="tableClass">
+                <tr>
+                    <td>
+                        <div>Price:</div>
+                    </td>
+                    <td>
+                        <div>{!v.product.PricebookEntries[0].UnitPrice}</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div>Name:</div>
+                    </td>
+                    <td>
+                        <div>{!v.product.Name}</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div>Color:</div>
+                    </td>
+                    <td>
+                        <div>{!v.product.BodyColor__c}</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div>Product Code:</div>
+                    </td>
+                    <td>
+                        <div>{!v.product.ProductCode}</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div>Maker:</div>
+                    </td>
+                    <td>
+                        <div>{!v.product.Maker__c}</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div>Processor:</div>
+                    </td>
+                    <td>
+                        <div>{!v.product.Processor__c}</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div>Tank Size:</div>
+                    </td>
+                    <td>
+                        <div>{!v.product}</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div>Air regulator:</div>
+                    </td>
+                    <td>
+                        <div>{!v.product.AirRegulator__c}</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div>Battery Capacity:</div>
+                    </td>
+                    <td>
+                        <div>{!v.product.BatteryCapacity__c}</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div>Charging Time:</div>
+                    </td>
+                    <td>
+                        <div>{!v.product.ChargingTime__c}</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div>Battery Charger:</div>
+                    </td>
+                    <td>
+                        <div>{!v.product.BatteryCharger__c}</div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="actionsContainer">
+        </div>
+    </div>
+</aura:component>

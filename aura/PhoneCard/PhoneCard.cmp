@@ -11,6 +11,8 @@
                 controller="PhoneCardController">
     <aura:handler name="init" action="{!c.doInit}" value="{!this}"/>
 
+    <aura:registerEvent name="openReview" type="c:openReviewModal"/>
+
     <aura:attribute name="unitPrice" type="Double"/>
     <aura:attribute name="leadId" type="String" default=""/>
     <aura:attribute name="product" type="Product2" default="{'sobjectType': 'Product2',
@@ -24,11 +26,13 @@
                 'BodyColor__c': '',
                 'Image__c': '',
                 'Maker__c': '',
-                'BatteryCapacity__c': ''
+                'BatteryCapacity__c': '',
+                'Rating__c': '',
+                'ReviewNumbers__c': ''
     }"/>
 
     <div class="cardContainer">
-        <div class="cardImage">
+        <div class="cardImage" onclick="{!c.toPhoneFullInfoPage}">
             <img src="{!v.product.Image__c}" alt="phoneImage"/>
         </div>
         <div class="cardDescription">
@@ -42,12 +46,20 @@
             <lightning:formattedText value="{!'Description: ' + v.product.Description}"/>
         </div>
         <div class="cardMainInfo">
-            <lightning:formattedText value="{!'Price: ' + v.unitPrice}"/>
-            <lightning:formattedText value="{!'Price: ' + v.unitPrice}"/>
+            <div>
+                <lightning:formattedText value="Rating: "/>
+                <lightning:formattedNumber value="{!v.product.Rating__c}" maximumFractionDigits="2"/>
+            </div>
+            <div>
+                <lightning:formattedText value="Price: "/>
+                <lightning:formattedNumber value="{!v.product.PricebookEntries[0].UnitPrice}" maximumFractionDigits="2"/>
+            </div>
         </div>
         <div class="cardAction">
-            <lightning:button aura:id="toCartButtonId" variant="destructive" label="to cart" title="Brand action" onclick="{! c.toCartAction}"/>
-            <lightning:button variant="destructive" label="review" title="Brand action" onclick="{! c.handleClick }"/>
+            <lightning:button aura:id="toCartButtonId" variant="destructive" label="to cart" title="Brand action"
+                              onclick="{! c.toCartAction}"/>
+            <lightning:button aura:id="reviewButtonId" variant="destructive" label="review" title="Brand action"
+                              onclick="{! c.reviewAction }"/>
         </div>
     </div>
 </aura:component>

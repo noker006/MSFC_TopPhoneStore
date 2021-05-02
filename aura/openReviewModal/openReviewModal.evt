@@ -1,0 +1,19 @@
+<!--
+ - Created by Max on 01.05.2021.
+ -->
+
+<aura:event type="APPLICATION" description="openReviewModal">
+    <aura:attribute name="product" type="Product2" default="{'sobjectType': 'Product2',
+                'Id': '',
+                'Name': '',
+                'ProductCode': '',
+                'Description': '',
+                'Family': '',
+                'PricebookEntries': [],
+                'Processor__c': '',
+                'BodyColor__c': '',
+                'Image__c': '',
+                'Maker__c': '',
+                'BatteryCapacity__c': ''
+    }"/>
+</aura:event>
