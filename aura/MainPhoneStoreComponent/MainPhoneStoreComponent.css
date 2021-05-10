@@ -7,9 +7,9 @@
     grid-template-columns: 1fr 2fr;
     grid-template-areas:
     "a a"
-    "b c"
-    "d d";
+    "b c";
     width: 100%;
+    font-family: Lato;
 }
 
 .THIS .headerBox {
@@ -18,16 +18,28 @@
 
 .THIS .filtersBox {
     grid-area: b;
+    background: #eeeded;
 }
 
 .THIS .tableBox {
     grid-area: c;
-    margin: 2rem 0 0 0;
 }
 
 .THIS .supportBox {
-    grid-area: d;
-    margin: 1rem 0 0 0;
     display: flex;
     place-content: flex-end;
+    background: rgb(47, 58, 61);
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+}
+
+.THIS .supportBoxButton{
+    background: #B82928;
+    margin: 10px;
+}
+
+.THIS .supportBoxButtonAdd:hover {
+    background: #801616;
 }

@@ -19,11 +19,16 @@
     <aura:attribute name="isSoqlProcessing" type="Boolean" default="false"/>
     <aura:attribute name="actualOffset" type="Integer"/>
 
-    <div class="slds-scrollable" aura:id="scrollContainerId">
+    <div class="slds-is-relative">
+        <aura:if isTrue="{! v.isSoqlProcessing}">
+            <lightning:spinner alternativeText="Loading" class="tableSpinner"/>
+        </aura:if>
+    </div>
+    <div class="slds-scrollable tableContainer" aura:id="scrollContainerId">
         <aura:iteration items="{!v.listProducts}" var="product" indexVar="index">
-                <div class="phoneCardContainer">
-                    <c:PhoneCard aura:id="phoneCardId" product="{!product}" leadId="{#v.leadId}"/>
-                </div>
+            <div class="phoneCardContainer">
+                <c:PhoneCard aura:id="phoneCardId" product="{!product}" leadId="{#v.leadId}"/>
+            </div>
         </aura:iteration>
     </div>
 </aura:component>

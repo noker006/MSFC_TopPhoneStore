@@ -31,7 +31,7 @@
                 'ReviewNumbers__c': ''
     }"/>
 
-    <div class="cardContainer">
+    <div class="cardContainer cardHover">
         <div class="cardImage" onclick="{!c.toPhoneFullInfoPage}">
             <img src="{!v.product.Image__c}" alt="phoneImage"/>
         </div>

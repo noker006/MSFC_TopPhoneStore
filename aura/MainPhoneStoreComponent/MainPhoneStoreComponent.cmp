@@ -28,11 +28,10 @@
             <c:PhoneStoreTable/>
         </div>
         <div class="supportBox">
-            <lightning:button class="headerButton"
-                              variant="destructive"
-                              label="support"
-                              title="support"
-                              onclick="{!c.openCaseModal}"/>
+            <lightning:icon class="supportBoxButton supportBoxButtonAdd"
+                            iconName="action:question_post_action"
+                            size="small"
+                            onclick="{!c.openCaseModal}"/>
         </div>
         <aura:if isTrue="{!v.showReviewModal}">
             <c:PhoneStoreReviewModal aura:id="phoneStoreReviewModalId" showReviewModal="{!v.showReviewModal}"/>

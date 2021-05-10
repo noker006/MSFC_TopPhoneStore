@@ -2,14 +2,28 @@
  * Created by Max on 18.04.2021.
  */
 
-.THIS.slds-scrollable{
-    padding: 0 ;
-    height: 750px;
+.THIS.slds-scrollable {
+    padding: 0;
+    height: 87vh;
     overflow-y: scroll;
 }
 
-.THIS .phoneCardContainer{
+.THIS .phoneCardContainer {
     display: flex;
     max-height: 20rem;
     margin: 1rem;
+}
+
+.THIS.tableContainer::-webkit-scrollbar {
+    width: 0;
+}
+
+.THIS.slds-is-relative{
+    position: absolute;
+    top: 50%;
+    left: 67%;
+}
+
+.THIS.hideTable {
+    visibility: hidden;
 }

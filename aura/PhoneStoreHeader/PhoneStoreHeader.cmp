@@ -4,8 +4,7 @@
 
 <aura:component description="PhoneStoreHeader">
     <div class="headerContainer">
-        <lightning:button class="headerButton" variant="destructive" label="Cart" title="Destructive action" onclick="{!c.goToCart}"/>
-        <lightning:button class="headerButton" variant="destructive" label="Destructive" title="Destructive action" />
-        <lightning:button class="headerButton" variant="destructive" label="Destructive" title="Destructive action" />
+        <h1 class="storeLogo">Top Phone Store</h1>
+        <lightning:icon iconName="standard:webcart" size="large" class="headerButton headerButtonAdd" onclick="{!c.goToCart}"/>
     </div>
 </aura:component>

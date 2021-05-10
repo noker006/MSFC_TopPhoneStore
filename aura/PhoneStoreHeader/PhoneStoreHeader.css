@@ -3,12 +3,25 @@
  */
 
 .THIS.headerContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
     background-color: rgb(47, 58, 61);
 }
 
 .THIS .headerButton {
-    height: 4vh;
     margin: 1rem;
-    background: #800000;
-    border-color: maroon;
+    background: #B82928;
 }
+
+.THIS .headerButtonAdd:hover {
+    background: #7a0b0b;
+}
+
+.THIS .storeLogo {
+    color: ghostwhite;
+    margin: 10px;
+    font-size: 14pt;
+    font-family: Lato;
+}
+

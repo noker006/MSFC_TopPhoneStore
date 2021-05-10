@@ -5,8 +5,8 @@
 ({
     getProductTableData: function (component, soqlQuery) {
         let action = component.get("c.getProducts");
-        let stateSQOL = component.get("v.isSoqlProcessing");
-        if (stateSQOL == false) {
+        let stateSoql = component.get("v.isSoqlProcessing");
+        if (stateSoql == false) {
             component.set('v.isSoqlProcessing', true);
 
             let listProducts = component.get("v.listProducts");
@@ -32,15 +32,22 @@
 
     getProductTableDataForEvt: function (component, soqlQuery) {
         let action = component.get("c.getProducts");
-        let stateSQOL = component.get("v.isSoqlProcessing");
-        if (stateSQOL == false) {
+        let stateSoql = component.get("v.isSoqlProcessing");
+        if (stateSoql == false) {
             component.set('v.isSoqlProcessing', true);
+
+            let scrollContainer = component.find("scrollContainerId");
+            $A.util.addClass(scrollContainer, 'hideTable');
 
             const actualOffset = 0;
             action.setParams({"query": soqlQuery, "qLimit": 5,  "qOffset": actualOffset});
             action.setCallback(this, function (response) {
                 let state = response.getState();
                 component.set('v.isSoqlProcessing', false);
+
+                let scrollContainer = component.find("scrollContainerId");
+                $A.util.removeClass(scrollContainer, 'hideTable');
+
                 let err = response.getError();
                 if (state === "SUCCESS") {
                     let newProducts = response.getReturnValue();
