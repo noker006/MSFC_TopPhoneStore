@@ -48,6 +48,7 @@
         cmp.find("selectOSOptionsId").set("v.value", "none");
         cmp.set("v.fromPrice", "0");
         cmp.set("v.toPrice", "0");
+        cmp.set("v.nameForSearch", "");
 
         const defaultQuery = cmp.get("v.defaultQuery");
 

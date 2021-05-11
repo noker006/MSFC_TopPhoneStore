@@ -22,6 +22,36 @@
 
     },
 
+    addToCart: function (cmp, productId, leadId) {
+        let toCartButton = cmp.find("toCartButtonId")
+        toCartButton.set("v.disabled", true);
+
+        let action = cmp.get("c.addToCart");
+        action.setParams({
+            "productId": productId,
+            "leadId": leadId,
+        });
+        action.setCallback(this, function (response) {
+            toCartButton.set("v.disabled", false);
+            let state = response.getState();
+
+            if (state === "SUCCESS") {
+                let result = response.getReturnValue();
+
+                this.showToast(cmp, "OK", result.userMessage, "success");
+
+                console.log('$$$$$$$$$$$$$$$$$$$$$$$$$ADD PRODUCT TO CART');
+                console.log(result.logMessage);
+                console.log(result.opp);
+                console.log(result.product);
+                console.log('$$$$$$$$$$$$$$$$$$$$$$$$$');
+            } else if (state === "ERROR") {
+                this.handleActionError(cmp, response, state);
+            }
+        });
+        $A.enqueueAction(action);
+    },
+
     showToast: function (cmp, title, message, type) {
         const toastEvent = $A.get("e.force:showToast");
         toastEvent.setParams({

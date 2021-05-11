@@ -2,28 +2,67 @@
  * Created by Max on 02.05.2021.
  */
 
-.THIS.fullInfoCardContainer{
+.THIS .fullInfoCardContainer {
     display: grid;
-    grid-template-columns: 1fr 2fr;
-    grid-template-rows: 1fr 2fr 0.5fr;
+    grid-template-columns: 1fr 1fr;
     grid-template-areas:
     "a b"
-    "c c"
-    "d d";
+    "c c";
+    margin: 2rem 12rem;
+    background: #eeeded;
 }
 
-.THIS .imageContainer{
+.THIS .imageContainer {
     grid-area: a;
+    background: white;
+    display: flex;
 }
 
-.THIS .partialInfoContainer{
+.THIS .phoneImage {
+    margin: auto;
+}
+
+.THIS .partialInfoContainer {
     grid-area: b;
+    font-size: large;
+    display: flex;
+    flex-direction: column;
+    margin: 2rem;
 }
 
-.THIS .mainInfoContainer{
+.THIS .mainInfoContainer {
     grid-area: c;
+    font-family: Lato;
+    border-collapse: collapse;
+    width: 100%;
 }
 
-.THIS .actionsContainer{
-    grid-area: d;
+.THIS td {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+.THIS th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+.THIS tr:nth-child(even) {
+    background-color: #dddddd;
+}
+
+.THIS .actionsContainer {
+    display: flex;
+    justify-content: space-between;
+    margin: 1rem 13rem;
+}
+
+.THIS .actionsPartialInfoBlock {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-content: flex-end;
+    margin: 20rem 0 0 0;
 }

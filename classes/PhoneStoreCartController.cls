@@ -5,7 +5,7 @@
 public without sharing class PhoneStoreCartController {
 
     @AuraEnabled
-    public static List<OpportunityLineItem> getAllOppLIs(Id leadId){
+    public static List<OpportunityLineItem> getAllOppLIs(Id leadId) {
         List<OpportunityLineItem> oppLIs = [
                 SELECT Product2.Name,
                         Product2.ProductCode,
@@ -15,7 +15,9 @@ public without sharing class PhoneStoreCartController {
                         Product2.Image__c,
                         Product2.Maker__c,
                         Product2.OperatingSystem__c,
-                        UnitPrice,
+                        Product2.Rating__c,
+                        Product2.BatteryCapacity__c,
+                        ListPrice,
                         Quantity
                 FROM OpportunityLineItem
                 WHERE Opportunity.Lead__c = :leadId
@@ -26,8 +28,11 @@ public without sharing class PhoneStoreCartController {
     }
 
     @AuraEnabled
-    public static Opportunity setOpenStageOfOpportunity(String oppLIList, Id leadId){
-        List<OpportunityLineItem> oppLIs = (List<OpportunityLineItem>)JSON.deserialize(oppLIList, List<OpportunityLineItem>.class);
+    public static Opportunity setOpenStageOfOpportunity(String oppLIList, Id leadId) {
+        List<OpportunityLineItem> oppLIs = (List<OpportunityLineItem>) JSON.deserialize(oppLIList, List<OpportunityLineItem>.class);
+        for (OpportunityLineItem oppLI : oppLIs) {
+            oppLI.UnitPrice = oppLI.ListPrice;
+        }
         update oppLIs;
 
         List<Opportunity> Opps = OppManager.getCartOppsByLeadId(leadId);

@@ -65,6 +65,7 @@ public without sharing class PhoneCardController {
                 oppLI.Quantity = 0;
             }
             oppLI.Quantity++;
+            oppLI.UnitPrice = oppLI.ListPrice;
             update oppLI;
 
             cartResult.logMessage = 'LOG: isProductInOpportunity!';

@@ -16,7 +16,7 @@
     <aura:attribute name="nameForSearch" type="String" default=""/>
     <aura:attribute name="query" type="String" default=""/>
 
-    <aura:attribute name="defaultQuery" type="String" default="SELECT Name,ProductCode,Description,Processor__c,BodyColor__c,Image__c,Maker__c,OperatingSystem__c,Rating__c,ReviewNumbers__c,(SELECT Id,UnitPrice FROM PricebookEntries WHERE IsActive = TRUE ORDER BY CreatedDate LIMIT 1) FROM Product2 "/>
+    <aura:attribute name="defaultQuery" type="String" default="SELECT Name,ProductCode,Description,Processor__c,BodyColor__c,Image__c,Maker__c,OperatingSystem__c,Rating__c,ReviewNumbers__c,BatteryCapacity__c,(SELECT Id,UnitPrice FROM PricebookEntries WHERE IsActive = TRUE ORDER BY CreatedDate LIMIT 1) FROM Product2 "/>
 
     <div class="phoneStoreFilterContainer">
         <div class="filtersContainer">
@@ -66,7 +66,7 @@
                                  messageWhenPatternMismatch="Enter valid integer number"/>
                 <lightning:input aura:id="toPriceId" type="text" label="to" name="toPrice" value="{!v.toPrice}"
                                  onchange="{!c.priceInputChange}" pattern= "^[0-9]+$"
-                                 messageWhenPatternMismatch="Enter valid integer number"/>
+                                 messageWhenPatternMismatch="Enter valid integer number" class="toPrice"/>
             </div>
 
             <lightning:input type="text" label="Search" value="{!v.nameForSearch}"/>

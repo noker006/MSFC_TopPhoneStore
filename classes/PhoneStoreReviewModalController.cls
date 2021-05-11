@@ -9,8 +9,10 @@ public without sharing class PhoneStoreReviewModalController {
         List<Lead> lead = LeadManager.getLeadById(leadId);
         product.Score__c += score;
         product.ReviewNumbers__c++;
+        String normalDescription = description.replaceAll('\\<.*?\\>', '');
 
-        Review__c review = new Review__c( Name = 'Review '+ lead[0].Name, Description__c = description, Score__c = score, Product__c = productId);
+
+        Review__c review = new Review__c( Name = 'Review '+ lead[0].Name, Description__c = normalDescription, Score__c = score, Product__c = productId, HtmlDiscriptionView__c = description);
         insert review;
 
         List<Review__c> reviews = getAllReviewsFromProduct(productId);

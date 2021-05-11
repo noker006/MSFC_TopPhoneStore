@@ -7,7 +7,8 @@ public without sharing class OppManager {
         List<Opportunity> opps = [
                 SELECT Id,
                         StageName,
-                (SELECT Id, Product2Id, Quantity	 FROM OpportunityLineItems)
+                        Amount,
+                (SELECT Id, Product2Id, Quantity, UnitPrice, ListPrice	 FROM OpportunityLineItems)
                 FROM Opportunity
                 WHERE Lead__c = :leadId
                 AND StageName = 'Cart'

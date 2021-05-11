@@ -41,7 +41,7 @@
             <lightning:formattedText value="{!'Processor: ' + v.product.Processor__c}"/>
             <lightning:formattedText value="{!'Color: ' + v.product.BodyColor__c}"/>
             <lightning:formattedText value="{!'Maker: ' + v.product.Maker__c}"/>
-            <lightning:formattedText value="{!'Battery capacity: ' + v.product.BatteryCapacity__c}"/>
+            <lightning:formattedText value="{!'Battery capacity: ' + v.product.BatteryCapacity__c + 'mAh'}"/>
             <lightning:formattedText value="{!'OS: ' + v.product.OperatingSystem__c}"/>
             <lightning:formattedText value="{!'Description: ' + v.product.Description}"/>
         </div>

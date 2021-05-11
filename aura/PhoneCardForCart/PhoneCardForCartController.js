@@ -5,7 +5,7 @@
 ({
     doInit: function (cmp, event, helper) {
         let oppLI = cmp.get("v.oppLI");
-        let totalPrice = oppLI.UnitPrice * oppLI.Quantity;
+        let totalPrice = oppLI.ListPrice * oppLI.Quantity;
         cmp.set("v.oppLITotalPrice", totalPrice);
     },
 
@@ -13,7 +13,7 @@
         let oppLI = cmp.get("v.oppLI");
 
         let totalPrice = cmp.get("v.oppLITotalPrice");
-        totalPrice -= oppLI.UnitPrice;
+        totalPrice -= oppLI.ListPrice;
         cmp.set("v.oppLITotalPrice", totalPrice);
 
         oppLI.Quantity--;
@@ -22,7 +22,7 @@
         helper.checkQuantity(cmp, oppLI.Quantity);
 
         let compEvent = cmp.getEvent("priceChanged");
-        compEvent.setParams({"price": oppLI.UnitPrice, "operation": "-", "oppLIId": oppLI.Id});
+        compEvent.setParams({"price": oppLI.ListPrice, "operation": "-", "oppLIId": oppLI.Id});
         compEvent.fire();
     },
 
@@ -30,7 +30,7 @@
         let oppLI = cmp.get("v.oppLI");
 
         let totalPrice = cmp.get("v.oppLITotalPrice");
-        totalPrice += oppLI.UnitPrice;
+        totalPrice += oppLI.ListPrice;
         cmp.set("v.oppLITotalPrice", totalPrice);
 
         oppLI.Quantity++;
@@ -39,7 +39,7 @@
         helper.checkQuantity(cmp, oppLI.Quantity);
 
         let compEvent = cmp.getEvent("priceChanged");
-        compEvent.setParams({"price": oppLI.UnitPrice, "operation": "+", "oppLIId": oppLI.Id});
+        compEvent.setParams({"price": oppLI.ListPrice, "operation": "+", "oppLIId": oppLI.Id});
         compEvent.fire();
     },
 

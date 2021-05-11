@@ -20,10 +20,10 @@
                 console.log('#######Result: ');
                 console.log(result);
                 if (result.isExistedUser) {
-                    this.showToast(cmp, "OK", "Hi"+ result.user.Name, "success");
+                    this.showToast(cmp, "OK", "Hi "+ result.user.Name, "success");
                     window.open("mainStorePage/?leadId=" + result.user.Id, "_self");
                 } else {
-                    this.errorHanler(cmp, "Error", "result.errorMessage", "##"+result.errorMessage);
+                    this.errorHanler(cmp, "Error", result.errorMessage, "##"+result.errorMessage);
 
                     cmp.set("v.lgErrorMessage", result.errorMessage);
                     cmp.set("v.lgShowErrorMessage", true);

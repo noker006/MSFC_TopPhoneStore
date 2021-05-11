@@ -20,7 +20,13 @@
         </aura:iteration>
         <div class="cartAction">
             <lightning:formattedText value="{!'Total price: '+v.totalPrice}" />
-            <lightning:button class="headerButton" variant="destructive" label="Buy" title="Destructive action" onclick="{!c.buyAction}"/>
+            <lightning:button
+                    class="headerButton"
+                    variant="destructive"
+                    label="Buy"
+                    title="Destructive action"
+                    onclick="{!c.buyAction}"
+                    disabled="{! v.totalPrice == 0 ? true : false }"/>
         </div>
     </div>
 </aura:component>

@@ -21,7 +21,7 @@ public without sharing class PhoneStoreFiltersController {
 
     @AuraEnabled
     public static String getQuery(Map<String, String> queryConditions) {
-        String query = 'SELECT Name,ProductCode,Description,Processor__c,BodyColor__c,Image__c,Maker__c,OperatingSystem__c,Rating__c,ReviewNumbers__c,' +
+        String query = 'SELECT Name,ProductCode,Description,Processor__c,BodyColor__c,Image__c,Maker__c,OperatingSystem__c,Rating__c,ReviewNumbers__c,BatteryCapacity__c,' +
                 '(SELECT Id,UnitPrice FROM PricebookEntries WHERE IsActive = TRUE ORDER BY CreatedDate LIMIT 1) ' +
                 'FROM Product2 ';
 

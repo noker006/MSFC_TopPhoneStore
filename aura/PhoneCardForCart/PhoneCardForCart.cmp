@@ -21,8 +21,10 @@
                 'Product2.Maker__c': '',
                 'Product2.OperatingSystem__c': '',
                 'Product2.Image__c': '',
+                'Product2.Rating__c': '',
                 'UnitPrice': '',
                 'Quantity': '',
+                'ListPrice': '',
     }"/>
 
     <div class="cardContainer">
@@ -35,18 +37,21 @@
             <lightning:formattedText value="{!'Processor: ' + v.oppLI.Product2.Processor__c}"/>
             <lightning:formattedText value="{!'Color: ' + v.oppLI.Product2.BodyColor__c}"/>
             <lightning:formattedText value="{!'Maker: ' + v.oppLI.Product2.Maker__c}"/>
-            <lightning:formattedText value="{!'Battery capacity: ' + v.oppLI.Product2.BatteryCapacity__c}"/>
+            <lightning:formattedText value="{!'Battery capacity: ' + v.oppLI.Product2.BatteryCapacity__c + 'mAh'}"/>
             <lightning:formattedText value="{!'OS: ' + v.oppLI.Product2.OperatingSystem__c}"/>
             <lightning:formattedText value="{!'Description: ' + v.oppLI.Product2.Description}"/>
             <lightning:formattedText value="{!'Id: ' + v.oppLI.Id}"/>
         </div>
         <div class="cardMainInfo">
-            <lightning:formattedText value="{!'Price: ' + v.oppLI.UnitPrice}"/>
-            <lightning:formattedText value="{!'Price: ' + v.oppLI.UnitPrice}"/>
+            <lightning:formattedText value="{!'Price: ' + v.oppLI.ListPrice * v.oppLI.Quantity}"/>
+            <div>
+                <lightning:formattedText value="Rating: "/>
+                <lightning:formattedNumber value="{!v.oppLI.Product2.Rating__c}" maximumFractionDigits="2"/>
+            </div>
         </div>
         <div class="cardAction">
             <div class="quantityController">
-                <lightning:button aura:id = "minusButton" class="headerButton" variant="destructive" label="-" title="-"
+                <lightning:button aura:id="minusButton" class="headerButton" variant="destructive" label="-" title="-"
                                   onclick="{!c.minusAction}" disabled="{! v.oppLI.Quantity == 1 ? true : false }"/>
                 <div class="oppLIQuantity">
                     <lightning:formattedNumber value="{!v.oppLI.Quantity}"/>

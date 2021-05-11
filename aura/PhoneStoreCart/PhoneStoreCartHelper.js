@@ -17,7 +17,7 @@
                 let totalPrice = 0;
                 for(let opplI of oppLIs){
                     console.log(opplI+'1111111');
-                    totalPrice += opplI.UnitPrice* opplI.Quantity;
+                    totalPrice += opplI.ListPrice * opplI.Quantity;
                 }
                 console.log(totalPrice);
                 cmp.set("v.totalPrice", totalPrice);
@@ -41,7 +41,7 @@
             if (state === "SUCCESS") {
                 let opp = response.getReturnValue();
 
-                this.showToast(cmp, "Buy success", "Instructions were sent to your email address", "success");
+                this.showToast(cmp, "Buy success", "You have been sent an email with confirmation of the purchase and instructions", "success");
                 console.log('$$$$$$$$$$$$$$$$$$$');
                 console.log('$ opp'+ opp);
                 console.log('$$$$$$$$$$$$$$$$$$$');
